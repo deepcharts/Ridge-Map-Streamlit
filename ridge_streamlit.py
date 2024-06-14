@@ -20,7 +20,7 @@ def plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, 
 # Function to geocode an address
 def geocode_address(address):
     try:
-        geocoded = geocode(address, provider="photon", user_agent="streamlit_app")
+        geocoded = geocode(address)
         point = geocoded.geometry.iloc[0]
         return point.y, point.x
     except:
@@ -42,7 +42,7 @@ st.sidebar.markdown("Subscribe to the [DeepCharts Youtube Channel](https://www.y
 st.sidebar.title("Advanced Options")
 
 # Sidebar plot parameters
-map_name = st.sidebar.text_input("Add a Title", value="Mt. St. Helens")
+map_name = st.sidebar.text_input("Add a Title", value="Mt. Shasta")
 num_lines = st.sidebar.slider("Number of Lines", min_value=25, max_value=500, value=150)
 linewidth = st.sidebar.slider("Line Width", min_value=0.1, max_value=5.0, value=1.0)
 vertical_ratio = st.sidebar.slider("Vertical Ratio", min_value=0, max_value=1000, value=200)
@@ -60,7 +60,7 @@ st.header("Part 1: Choose Area of Focus")
 st.write("Search for a place below. Click on the map to adjust the location.")
 
 # Search address input
-address = st.text_input("Search Address", value="Mount St. Helens")
+address = st.text_input("Search Address", value="Mount Shasta")
 if address:
     lat, lon = geocode_address(address)
     if lat is None or lon is None:
