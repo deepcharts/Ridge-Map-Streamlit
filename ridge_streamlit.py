@@ -17,16 +17,6 @@ def plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, 
     rm.plot_map(values=values, ax=ax, label=map_name, label_y=0.1, label_x=0.55, label_size=40, linewidth=linewidth, line_color=plt.get_cmap(colormap), kind='elevation')
     st.pyplot(fig)
 
-# Function to geocode an address
-def geocode_address(address):
-    try:
-        geocoded = geocode(address)
-        point = geocoded.geometry.iloc[0]
-        return point.y, point.x
-    except:
-        return None, None
-
-
 # (3) App Start
 # Set Streamlit layout to wide
 st.set_page_config(layout="wide")
@@ -34,7 +24,7 @@ st.set_page_config(layout="wide")
 ## (3a) Sidebar Content
 
 st.sidebar.title("About")
-st.sidebar.markdown("Create beautiful topographic maps with this interactive webapp, built in Python with [Streamlit]('https://docs.streamlit.io/') + [Ridge Map]('https://github.com/ColCarroll/ridge_map')")
+st.sidebar.markdown("Create beautiful topographic maps with this interactive webapp, built in Python with [Streamlit](https://docs.streamlit.io/) + [Ridge Map](https://github.com/ColCarroll/ridge_map)")
 st.sidebar.markdown("Learn how to **code** a custom map:")
 st.sidebar.video('https://youtu.be/rsUQIDe-hjE')
 st.sidebar.markdown("Subscribe to the [DeepCharts Youtube Channel](https://www.youtube.com/@DeepCharts)")
@@ -55,19 +45,14 @@ colormap = st.sidebar.selectbox("Color Scheme", options=plt.colormaps(), index=p
 ### Title
 st.title("Create a Topographic Map in Seconds")
 
+st.write("Make beautiful topographic ridge maps for free.")
+
 ### Part 1
 st.header("Part 1: Choose Area of Focus")
-st.write("Search for a place below. Click on the map to adjust the location.")
+st.write("Toggle the map to choose a location. The viewable area of the map below will be turned into a ridge map.")
 
-# Search address input
-address = st.text_input("Search Address", value="Mount Shasta")
-if address:
-    lat, lon = geocode_address(address)
-    if lat is None or lon is None:
-        st.error("Address not found. Please try again.")
-        lat, lon = 41.375, -122.25  # Default center location
-else:
-    lat, lon = 41.375, -122.25  # Default center location
+
+lat, lon = 41.375, -122.25  # Default center location
 
 # Display map for bbox selection
 m = folium.Map(location=[lat, lon], zoom_start=10)
@@ -84,9 +69,10 @@ if output and 'bounds' in output:
 
 ### Part 2
 st.header("Part 2: Create Map")
-st.write("Click below to generate the map. For more customization, change the 'Advanced Options' on the left sidebar.")
+st.write("Click below to generate the map.")
+st.write("For more customization, edit the 'Advanced Options' on the left sidebar before clicking 'Create Ridge Map' button.")
 
-if st.button("Plot Ridge Map"):
+if st.button("Create Ridge Map"):
     plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, linewidth, colormap, map_name)
 
 
