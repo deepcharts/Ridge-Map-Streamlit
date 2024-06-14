@@ -49,8 +49,7 @@ st.write("Make beautiful topographic ridge maps for free.")
 
 ### Part 1
 st.header("Part 1: Choose Area of Focus")
-st.write("Toggle the map to choose a location. The viewable area of the map below will be turned into a ridge map.")
-
+st.write("Move the map below to choose a location. The visible area of the map will be used create a ridge map.")
 
 lat, lon = 41.375, -122.25  # Default center location
 
@@ -74,6 +73,12 @@ st.write("For more customization, edit the 'Advanced Options' on the left sideba
 
 if st.button("Create Ridge Map"):
     plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, linewidth, colormap, map_name)
+
+
+
+
+
+
 
 
     
