@@ -20,7 +20,7 @@ def plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, 
 # Function to geocode an address
 def geocode_address(address):
     try:
-        geocoded = geocode(address, provider="nominatim", user_agent="streamlit_app")
+        geocoded = geocode(address)
         point = geocoded.geometry.iloc[0]
         return point.y, point.x
     except:
