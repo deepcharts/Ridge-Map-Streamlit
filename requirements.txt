@@ -1,0 +1,6 @@
+streamlit
+folium
+streamlit_folium
+ridge_map
+matplotlib
+geopandas
