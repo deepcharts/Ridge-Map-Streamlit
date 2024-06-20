@@ -25,9 +25,12 @@ st.set_page_config(layout="wide")
 
 st.sidebar.title("About")
 st.sidebar.markdown("Create beautiful topographic maps with this interactive webapp, built in Python with [Streamlit](https://docs.streamlit.io/) + [Ridge Map](https://github.com/ColCarroll/ridge_map)")
-st.sidebar.markdown("Learn how to **code** a custom map:")
-st.sidebar.video('https://youtu.be/rsUQIDe-hjE')
+st.sidebar.markdown("Learn how I made this Python webapp with Streamlit:")
+st.sidebar.video('https://youtu.be/1EMAzwP8EUw')
 st.sidebar.markdown("Subscribe to the [DeepCharts Youtube Channel](https://www.youtube.com/@DeepCharts)")
+
+
+st.sidebar.markdown("Create beautiful topographic maps with this interactive webapp, built in Python with [Streamlit](https://docs.streamlit.io/) + [Ridge Map](https://github.com/ColCarroll/ridge_map)")
 
 st.sidebar.title("Advanced Options")
 
@@ -73,7 +76,6 @@ st.write("For more customization, edit the 'Advanced Options' on the left sideba
 
 if st.button("Create Ridge Map"):
     plot_ridge_map(bbox, num_lines, lake_flatness, water_ntile, vertical_ratio, linewidth, colormap, map_name)
-
 
 
 
