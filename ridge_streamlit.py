@@ -35,7 +35,7 @@ st.sidebar.markdown("Create beautiful topographic maps with this interactive web
 st.sidebar.title("Advanced Options")
 
 # Sidebar plot parameters
-map_name = st.sidebar.text_input("Add a Title", value="Mt. Shasta")
+map_name = st.sidebar.text_input("Add a Title", value="")
 num_lines = st.sidebar.slider("Number of Lines", min_value=25, max_value=500, value=150)
 linewidth = st.sidebar.slider("Line Width", min_value=0.1, max_value=5.0, value=1.0)
 vertical_ratio = st.sidebar.slider("Vertical Ratio", min_value=0, max_value=1000, value=200)
